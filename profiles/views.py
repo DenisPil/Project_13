@@ -9,7 +9,7 @@ from .models import Profile
 def profiles_index(request):
     profiles_list = Profile.objects.all()
     context = {'profiles_list': profiles_list}
-    return render(request, 'profiles_index.html', context)
+    return render(request, 'index.html', context)
 
 
 # Aliquam sed metus eget nisi tincidunt ornare accumsan eget lac
