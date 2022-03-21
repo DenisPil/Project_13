@@ -65,6 +65,17 @@ WSGI_APPLICATION = 'oc_lettings_site.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+"""if os.getenv('ENV') == 'production':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'oc-lettings-site',
+            'USER': 'postgres',
+            'PASSWORD': 'jojo',
+            'HOST': '',
+            'PORT': '5432',
+        }
+    }"""
 
 DATABASES = {
     'default': {
