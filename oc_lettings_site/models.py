@@ -8,8 +8,10 @@ class Address(models.Model):
     street = models.CharField(max_length=64)
     city = models.CharField(max_length=64)
     state = models.CharField(max_length=2, validators=[MinLengthValidator(2)])
-    zip_code = models.PositiveIntegerField(validators=[MaxValueValidator(99999)])
-    country_iso_code = models.CharField(max_length=3, validators=[MinLengthValidator(3)])
+    zip_code = models.PositiveIntegerField(
+        validators=[MaxValueValidator(99999)])
+    country_iso_code = models.CharField(max_length=3,
+                                        validators=[MinLengthValidator(3)])
 
     def __str__(self):
         return f'{self.number} {self.street}'
@@ -29,29 +31,3 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
-
-        """profile
-from django.db import migrations
-
-
-def duplicate_table(apps, schema_editor):
-    Profile = apps.get_model('oc_lettings_site', 'Profile')
-    NewProfile = apps.get_model('profiles', 'Profile')
-    profiles_list = list()
-    for profile in Profile.objects.all():
-        new = NewProfile(user=profile.user,
-                         favorite_city=profile.favorite_city)
-        profiles_list.append(new)
-    NewProfile.objects.bulk_create(profiles_list)
-
-
-class Migration(migrations.Migration):
-
-    dependencies = [
-        ('profiles', '0001_initial'),
-    ]
-
-    operations = [
-        migrations.RunPython(duplicate_table),
-    ]
-        """
