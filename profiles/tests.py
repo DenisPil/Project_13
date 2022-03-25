@@ -1,5 +1,6 @@
 from django.test import TestCase
 
 
-def test_dummy():
-    assert 1
+class Test(TestCase):
+    def test_dummy():
+        assert 1
