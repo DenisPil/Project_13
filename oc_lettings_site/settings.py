@@ -78,12 +78,8 @@ WSGI_APPLICATION = 'oc_lettings_site.wsgi.application'
         }
     }   4"""
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'oc-lettings-site.sqlite3'),
-    }
-}
+DATABASES['default'] = dj_database_url.config()
+
 
 
 # Password validation
